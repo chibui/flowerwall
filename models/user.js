@@ -1,6 +1,33 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt.js');
+var bcrypt = require('bcryptjs');
 
-mongoose.connect('mongodb://localhost/loginapp') // Point to db
+// User schema
 
-var db = mongoose.connection;
+var UserSchema = mongoose.Schema({
+    name: {
+        type: String
+    },
+    username: {
+        type: String,
+        index: true
+    },
+    email: {
+        type: String
+    },
+    password: {
+        type: String
+    }
+});
+
+// creating variable to access outside this file
+var User = module.exports = mongoose.model('User', UserSchema);
+
+// User functions
+module.exports.createUser = function(newUser, callBack){
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(newUser.password, salt, function(err, hash) {
+            newUser.password = hash;
+            newUser.save(callBack);
+        });
+    });
+}
