@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/loginapp'); //connecting to database
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
-var users = require('.routes/users');
+var users = require('./routes/users');
 
 //  Initialize app
 var app = express();
@@ -39,6 +39,10 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
+
+// Initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express Validator
 app.use(expressValidator({
@@ -64,7 +68,18 @@ app.use(flash());
 // Global Vars for flash
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash)'error_msg');
+  res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
   next();
-})
+});
+
+// Defining routes
+app.use('/', routes);
+app.use('/users', users);
+
+// Set port number
+app.set('port', (process.env.PORT || 3000));
+// Set server to listen
+app.listen(app.get('port'), function(){
+  console.log('Server started on port ' +app.get('port'));
+});
