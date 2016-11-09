@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Loginapp</title>
+    <title>loginapp</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
 
@@ -13,15 +13,16 @@
        <nav>
          <ul class="nav nav-pills pull-right">
            {{#if user}}
-            <li role="presentation"><a href="/">Dashboard</a></li>
+            <li role="presentation"><a href="/dashboard">Dashboard</a></li>
             <li role="presentation"><a href="/users/logout">logout</a></li>
+            <li role="presentation"><a href="/users/edit">edit</a></li>
            {{else}}
              <li role="presentation"><a href="/users/login">login</a></li>
              <li role="presentation"><a href="/users/register">register</a></li>
            {{/if}}
          </ul>
        </nav>
-       <h3 class="text-muted">loginapp</h3>
+       <h3 class="text-muted"><a href="/">loginapp</a></h3>
      </div>
 
 

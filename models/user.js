@@ -16,6 +16,9 @@ var UserSchema = mongoose.Schema({
     },
     password: {
         type: String
+    },
+    admin: {
+        type: Boolean
     }
 });
 
@@ -28,6 +31,15 @@ module.exports.createUser = function(newUser, callBack){
         bcrypt.hash(newUser.password, salt, function(err, hash) {
             newUser.password = hash;
             newUser.save(callBack);
+        });
+    });
+}
+
+module.exports.updateUser = function(user, callBack){
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(user.password, salt, function(err, hash) {
+            user.password = hash;
+            user.save(callBack);
         });
     });
 }
@@ -49,4 +61,24 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
       if(err) throw err;
       callback(null, isMatch);
   });
+}
+
+// Function to check if logged in
+
+module.exports.ensureAuthenticated = function(req, res, next) {
+  if(req.isAuthenticated()){
+    return next();
+  } else {
+    req.flash('error_msg', "You are not logged in")
+    res.redirect('/users/login');
+  };
+}
+
+module.exports.ensureAdmin = function(req, res, next) {
+  if(req.isAdmin(user.admin === true )){
+    return next();
+  } else {
+    req.flash('error_msg', "You are not logged in")
+    res.redirect('/users/login');
+  };
 }

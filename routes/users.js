@@ -3,7 +3,6 @@ var app = express();
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy; // can sub for oAuth, facebook, google etc
-
 var User = require('../models/user') // accessing the variable created in the model
 
 // Register route
@@ -11,11 +10,9 @@ router.get('/register', function(req, res){
   res.render('register');
 });
 
-// Login router
-router.get('/login', function(req, res){
-  res.render('login');
-});
-
+// router.get('/', function(req, res) {
+//   res.render()
+// })
 // Register User
 router.post('/register', function(req, res){
     var name = req.body.name;
@@ -23,6 +20,7 @@ router.post('/register', function(req, res){
     var email = req.body.email;
     var password = req.body.password;
     var password2 = req.body.password2;
+    var admin = req.body.admin;
 
     // Validation
     req.checkBody('name', 'Name is required').notEmpty();
@@ -44,7 +42,8 @@ router.post('/register', function(req, res){
             name: name,
             username: username,
             email: email,
-            password: password
+            password: password,
+            admin: admin
         });
 
         // calling create user function in model
@@ -57,6 +56,11 @@ router.post('/register', function(req, res){
 
         res.redirect('/users/login');
     }
+ });
+
+ // Login router
+ router.get('/login', function(req, res){
+   res.render('login');
  });
 
 // Checking username and password against db records using user model
@@ -79,7 +83,6 @@ passport.use(new LocalStrategy(
   }));
 
 // Create session and establish cookie when logged in, only serialize user.id
-
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -93,7 +96,7 @@ passport.deserializeUser(function(id, done) {
  router.post('/login',
   passport.authenticate('local', {sucessRedirect:'/', failureRedirect:'/users/login', failureFlash: true}),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/dashboard');
   });
 
 
@@ -103,5 +106,70 @@ router.get('/logout', function(req, res) {
   req.flash('success_msg', 'You have logged out');
   res.redirect('/users/login');
 });
+
+
+router.route('/')
+
+  .get(function(req, res) {
+      User.find(function(err, users){
+          if (err)
+              res.send(err);
+          res.json(users);
+      })
+  });
+
+  router.route('/:user_id')
+    .get(function(req, res) {
+        User.findById(req.params.user_id, function(err, user) {
+          if (err)
+            res.send(err);
+          res.json(user);
+        });
+    })
+
+    .put(function(req, res) {
+      User.findById(req.params.user_id, function(err, user) {
+        if (err) throw(error);
+          res.send(err);
+
+        user.name = req.body.name;
+        user.username = req.body.username;
+        user.email = req.body.email;
+        user.password = req.body.password;
+        user.passwordNew = req.body.passwordNew;
+        user.password2 = req.body.password2;
+
+        // Validation
+        req.checkBody('name', 'Name is required').notEmpty();
+        req.checkBody('username', 'Username is required').notEmpty();
+        req.checkBody('email', 'Email is not valid').isEmail();
+        req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+
+        var errors = req.validationErrors();
+
+        User.updateUser(user, function(err, user){
+            if(err) throw err; // Check for errors
+            console.log(user);
+        });
+
+        user.save(function(err) {
+          if (err)
+            res.send(err);
+        });
+        req.flash('success_msg', 'Profile updated'); // must be outside of function
+
+      });
+    })
+
+    .delete(function(req,res) {
+      User.remove({
+        _id: req.params.user_id }, function(err,user) {
+          if(err) throw(err);
+            res.send(err);
+          console.log('User deleted');
+
+      });
+      req.flash('success_msg', 'User deleted'); // must be outside of function
+    })
 
 module.exports = router;

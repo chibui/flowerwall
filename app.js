@@ -16,6 +16,8 @@ var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var dashboard = require('./routes/dashboard');
+var admindash = require('./routes/admindash');
 
 //  Initialize app
 var app = express();
@@ -27,7 +29,7 @@ app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true })); // true = any type, false = string or array
 app.use(cookieParser());
 
 // Set static public folder
@@ -77,6 +79,8 @@ app.use(function (req, res, next) {
 // Defining routes
 app.use('/', routes);
 app.use('/users', users);
+app.use('/dashboard', dashboard);
+app.use('/admindash', admindash);
 
 // Set port number
 app.set('port', (process.env.PORT || 3000));
