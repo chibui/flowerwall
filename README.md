@@ -16,7 +16,6 @@
 *
 *
 *
-*
 
 ## Database initialization
 
