@@ -1,6 +1,5 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -12,17 +11,6 @@ body {
   padding-left: 15px;
 }
 
-/* Custom page header */
-.header {
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  /*line-height: 40px;*/
-}
 
 /* Custom page footer */
 .footer {
@@ -83,4 +71,12 @@ body {
 
   footer {
     margin-top: 40px;
+  }
+
+  /*.thumbnail img {
+    max-height: 200px;
+  }*/
+
+  .thumbnail .description {
+    color: #7f7f7f;
   }

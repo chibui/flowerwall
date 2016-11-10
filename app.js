@@ -24,8 +24,8 @@ var app = express();
 
 //  View engine
 app.set('views', path.join(__dirname, 'views')); // assigning 'views' folder to handle views
-app.engine('handlebars', exphbs({defaultLayout:'layout'})); // set handlebars as layout engine
-app.set('view engine', 'handlebars');
+app.engine('hbs', exphbs({defaultLayout:'layout', extname:'.hbs'})); // set handlebars as layout engine
+app.set('view engine', '.hbs');
 
 // BodyParser Middleware
 app.use(bodyParser.json());

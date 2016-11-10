@@ -6,8 +6,6 @@ var User = require('../models/user') // accessing the variable created in the mo
 //GET Dashboard
 router.get('/', ensureAuthenticated, function(req, res) {
   if(req.user.admin) {
-    console.log('dashroute')
-
     res.render('admindash');
   } else {
     res.render('dashboard');

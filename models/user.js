@@ -4,22 +4,11 @@ var bcrypt = require('bcryptjs');
 // User schema
 
 var UserSchema = mongoose.Schema({
-    name: {
-        type: String
-    },
-    username: {
-        type: String,
-        index: true
-    },
-    email: {
-        type: String
-    },
-    password: {
-        type: String
-    },
-    admin: {
-        type: Boolean
-    }
+    name:     { type: String },
+    username: { type: String, index: true },
+    email:    { type: String },
+    password: { type: String },
+    admin:    { type: Boolean }
 });
 
 // creating variable to access outside this file
