@@ -74,11 +74,20 @@ module.exports.ensureAuthenticated = function(req, res, next) {
   };
 }
 
-module.exports.ensureAdmin = function(req, res, next) {
-  if(req.isAdmin(user.admin === true )){
-    return next();
-  } else {
-    req.flash('error_msg', "You are not logged in")
-    res.redirect('/users/login');
-  };
-}
+// // Function to check if user if admin
+// module.exports.ensureAdmin = function(req, res, next) {
+//   if(req.isAdmin()) {
+//     return next();
+//   } else {
+//     req.flash('error_msg', "You are not logged in")
+//     res.redirect('/users/login');
+//   };
+// }
+//
+// module.exports.isAdmin = function(req, res, next) {
+//   if (user.admin === true) {
+//     return next();
+//   } else {
+//     return(false);
+//   };
+// }

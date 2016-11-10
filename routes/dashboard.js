@@ -1,9 +1,17 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user') // accessing the variable created in the model
+
 
 //GET Dashboard
 router.get('/', ensureAuthenticated, function(req, res) {
-  res.render('dashboard');
+  if(req.user.admin) {
+    console.log('dashroute')
+
+    res.render('admindash');
+  } else {
+    res.render('dashboard');
+  }
   // console.log('test');
 });
 
