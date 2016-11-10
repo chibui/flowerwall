@@ -15,17 +15,6 @@ router.get('/', function(req, res) {
     console.log('in else');
     res.redirect('dashboard');
   }
-  // console.log('test');
 });
-
-// function ensureAdmin(req, res, next) {
-//   if(req.isAdmin()) {
-//     return next();
-//   } else {
-//     req.flash('error_msg', "You are not logged in")
-//     res.redirect('/users/login');
-//   }
-// };
-
 
 module.exports = router;

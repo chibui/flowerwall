@@ -7,7 +7,7 @@ var User = require('../models/user') // accessing the variable created in the mo
 
 // Register route
 router.get('/register', function(req, res){
-  res.render('register');
+  res.render('./user/register');
 });
 
 // router.get('/', function(req, res) {
@@ -33,7 +33,7 @@ router.post('/register', function(req, res){
     var errors = req.validationErrors();
 
     if(errors){
-        res.render('register',{
+        res.render('./user/register',{
           errors:errors
         });
     } else {
@@ -60,7 +60,7 @@ router.post('/register', function(req, res){
 
  // Login router
  router.get('/login', function(req, res){
-   res.render('login');
+   res.render('./user/login');
  });
 
 // Checking username and password against db records using user model
@@ -95,7 +95,9 @@ passport.deserializeUser(function(id, done) {
 // passport user auth
  router.post('/login',
   passport.authenticate('local', {sucessRedirect:'/', failureRedirect:'/users/login', failureFlash: true}),
+
   function(req, res) {
+    console.log('here');
     res.redirect('/dashboard');
   });
 
@@ -122,7 +124,7 @@ router.route('/')
     .get(function(req, res) {
         User.findById(req.params.user_id, function(err, user) {
           if (err)
-            res.send(err);
+              return res.send(err);
           res.json(user);
         });
     })

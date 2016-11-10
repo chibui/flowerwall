@@ -1,21 +1,14 @@
-# flowerwall
-
-
 # Chi's CFA Term 3 Project - The Flower Wall
 
-* Mongodb
-* ExpressJS
-*
-* NodeJS
 
 ## Dependencies
-*Passportjs
-*
-*
-*
-*
-*
-*
+* Mongodb
+* ExpressJS
+* NodeJS
+* Bootstrap
+* Passportjs
+* Fontawesome
+* Jquery
 
 ## Database initialization
 

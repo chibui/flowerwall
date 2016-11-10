@@ -76,7 +76,10 @@ body {
   /*.thumbnail img {
     max-height: 200px;
   }*/
-
+  .thumbnail {
+    min-height: 180px;
+    max-height: 200px;
+  }
   .thumbnail .description {
     color: #7f7f7f;
   }
