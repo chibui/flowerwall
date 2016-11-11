@@ -9,6 +9,7 @@
 * Passportjs
 * Fontawesome
 * Jquery
+* Csurf
 
 ## Database initialization
 

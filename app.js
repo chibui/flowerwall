@@ -38,8 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Express session
 app.use(session({
     secret: 'secret', // Admin defined
-    saveUninitialized: true,
-    resave: true
+    saveUninitialized: false,
+    resave: false
 }));
 
 // Initialize passport

@@ -3,18 +3,22 @@ var app = express();
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy; // can sub for oAuth, facebook, google etc
-var User = require('../models/user') // accessing the variable created in the model
+var User = require('../models/user'); // accessing the variable created in the model
+var csrf = require('csurf'); // session protection
+
+var csrfProtection = csrf();
+router.use(csrfProtection);
 
 // Register route
-router.get('/register', function(req, res){
-  res.render('./user/register');
+router.get('/register', function(req, res, next){
+  res.render('./user/register', { csrfToken: req.csrfToken()});
 });
 
 // router.get('/', function(req, res) {
 //   res.render()
 // })
 // Register User
-router.post('/register', function(req, res){
+router.post('/register', function(req, res, next){
     var name = req.body.name;
     var username = req.body.username;
     var email = req.body.email;
