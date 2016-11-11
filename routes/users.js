@@ -63,8 +63,8 @@ router.post('/register', function(req, res, next){
  });
 
  // Login router
- router.get('/login', function(req, res){
-   res.render('./user/login');
+ router.get('/login', function(req, res, next){
+   res.render('./user/login', { csrfToken: req.csrfToken()});
  });
 
 // Checking username and password against db records using user model
