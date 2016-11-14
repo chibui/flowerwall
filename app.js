@@ -15,6 +15,7 @@ var validator = require('express-validator');
 mongoose.connect('localhost:27017/shopping');
 require('./config/passport');
 
+
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
 
@@ -37,7 +38,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/user', userRoutes);
+app.use(function(req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+
+app.use('/user/', userRoutes);
 app.use('/', routes);
 
 // catch 404 and forward to error handler

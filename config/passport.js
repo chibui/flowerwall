@@ -12,7 +12,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-passport.use('local-register', new LocalStrategy({
+passport.use('local.register', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
@@ -48,7 +48,7 @@ passport.use('local-register', new LocalStrategy({
     });
 }));
 
-passport.use('local-login', new LocalStrategy({
+passport.use('local.login', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
@@ -68,7 +68,7 @@ passport.use('local-login', new LocalStrategy({
       return done(err);
     }
     if (!user) {
-      return done(null, false, {failureRedirect: '/user/register', message: 'No user found'});
+      return done(null, false, {message: 'No user found.'});
     }
     if (!user.validPassword(password)) {
       return done(null, false, {message: 'Username/password incorrect!'});
