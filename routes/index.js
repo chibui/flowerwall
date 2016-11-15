@@ -5,13 +5,14 @@ var Product = require('../models/product');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var successMsg = req.flash('success')[0];
   Product.find(function(err,items) {
       var productRows = [];
       var rowSize = 3;
       for ( var i = 0; i < items.length; i += rowSize) {
         productRows.push(items.slice(i, i + rowSize));
-      }
-      res.render('shop/index', { title: 'Shop', products: productRows });
+      }  // Render shop index and flash message handling
+      res.render('shop/index', { title: 'Shop', products: productRows, successMsg: successMsg, noMessages: !successMsg});
   });
 });
 
@@ -50,9 +51,38 @@ router.get('/checkout', function(req, res, next) {
       return res.redirect('/cart');
   }
   var cart = new Cart(req.session.cart);
+  //store multiple errors into an array (connect-flash) and accessing the first
+  var errMsg = req.flash('error')[0];
   // Passing total price to checkout view
-  res.render('shop/checkout', {total: cart.totalPrice});
+  res.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
 
+});
+
+router.post('/checkout', function(req, res, next) {
+  if (!req.session.cart) {
+      return res.redirect('/cart');
+  }
+  var cart = new Cart(req.session.cart);
+
+  var stripe = require("stripe")(
+    "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
+  );
+
+  stripe.charges.create({
+    amount: cart.totalPrice * 100,
+    currency: "aud",
+    source: req.body.stripeToken, // obtained with Stripe.js
+    description: "Test charge"
+  }, function(err, charge) {
+    // asynchronously called
+    if (err) {
+      req.flash('error', err.message);
+      return res.redirect('/checkout');
+    }
+    req.flash('success', 'Deposit successful');
+    req.session.cart = null
+    res.redirect('/');
+  });
 });
 
 module.exports = router;
