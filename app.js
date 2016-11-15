@@ -11,6 +11,8 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
+var MongoStore = require('connect-mongo')(session);
+
 
 mongoose.connect('localhost:27017/shopping');
 require('./config/passport');
@@ -32,14 +34,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 app.use(cookieParser());
-app.use(session({secret: 'robs-site', resave: false, saveUninitialized: false }));
+app.use(session({
+  secret: 'robs-site',
+  resave: false, // true is deprecated
+  saveUninitialized: false, // true is deprecated
+  store: new MongoStore({ mongooseConnection: mongoose.connection }), // using existing mongoose connection
+  cookie: { maxAge: 180 * 60 * 1000} // three hours
+}));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Pass objects for access in views and handlebars
 app.use(function(req, res, next) {
-  res.locals.login = req.isAuthenticated();
+  res.locals.login = req.isAuthenticated(); // pass authenticated object
+  res.locals.session = req.session; // pass session object
   next();
 });
 
