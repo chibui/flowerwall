@@ -7,7 +7,9 @@
         <div class="caption clearfix">
           <h3>{{this.title}}</h3>
           <p class="description">{{this.description}}</p>
-          <p><a href="#" class="btn btn-default pull-right pull-down" role="button">More</a></p>
+          <div class="price pull-left">${{this.price}}</div>
+<!-- passing item id -->
+          <p><a href="/addToCart/{{this._id}}" class="btn btn-default pull-right pull-down" role="button">Add</a></p>
         </div>
       </div>
     </div>
