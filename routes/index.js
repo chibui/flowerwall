@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
+
 var Cart = require('../models/cart');
 var Product = require('../models/product');
+var Order = require('../models/order');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -65,7 +67,7 @@ router.post('/checkout', function(req, res, next) {
   var cart = new Cart(req.session.cart);
 
   var stripe = require("stripe")(
-    "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
+    "sk_test_TIjO1CYDCL43z2uMhIPanco6"
   );
 
   stripe.charges.create({
@@ -79,9 +81,19 @@ router.post('/checkout', function(req, res, next) {
       req.flash('error', err.message);
       return res.redirect('/checkout');
     }
-    req.flash('success', 'Deposit successful');
-    req.session.cart = null
-    res.redirect('/');
+    var order = new Order({
+      user: req.user,
+      cart: cart,
+      address: req.body.address,
+      name: req.body.name,
+      paymentId: charge.id,
+    });
+    order.save(function(err, result) {
+      // handle error
+      req.flash('success', 'Deposit successful');
+      req.session.cart = null
+      res.redirect('/');
+    });
   });
 });
 

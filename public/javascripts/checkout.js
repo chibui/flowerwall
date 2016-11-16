@@ -1,4 +1,4 @@
-Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+Stripe.setPublishableKey('pk_test_4bCloZcJDM5sKdnbFm5NkQYY');
 
 var $form = $('#checkout-form');
 
@@ -11,8 +11,8 @@ $form.submit(function(event) {
     exp_month: $('#card-expiry-month').val(),
     exp_year: $('#card-expiry-year').val(),
     name: $('#card-name').val()
-}, stripeResponseHandler);
-return false;
+  }, stripeResponseHandler);
+    return false;
 });
 
 function stripeResponseHandler(status, response) {
