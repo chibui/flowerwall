@@ -29,10 +29,18 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', passport.authenticate('local.register', {
-  successRedirect: '/user/profile',
   failureRedirect: '/user/register',
   failureFlash: true
-}));
+}), function(req, res, next) {
+  // check if old url present, if present redirect to old url then set to null
+  if (req.session.oldUrl) {
+    var oldUrl = req.session.oldUrl;
+    req.session.oldUrl = null;
+    res.redirect(oldUrl);
+  } else {
+      res.redirect('/user/profile');
+  }
+});
 
 // Login Routes
 router.get('/login', function(req, res, next) {
@@ -41,10 +49,18 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', passport.authenticate('local.login', {
-  successRedirect: '/user/profile',
   failureRedirect: '/user/login',
   failureFlash:true
-}));
+}), function(req, res, next) {
+  // check if old url present, if present redirect to old url then set to null
+  if (req.session.oldUrl) {
+    var oldUrl = req.session.oldUrl;
+    req.session.oldUrl = null;
+    res.redirect(oldUrl);
+  } else {
+      res.redirect('/user/profile');
+  }
+});
 
 
 

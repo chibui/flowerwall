@@ -48,7 +48,7 @@ router.get('/cart', function(req, res, next) {
 });
 
 // Checkout route
-router.get('/checkout', function(req, res, next) {
+router.get('/checkout', isLoggedIn, function(req, res, next) {
   if (!req.session.cart) {
       return res.redirect('/cart');
   }
@@ -60,7 +60,7 @@ router.get('/checkout', function(req, res, next) {
 
 });
 
-router.post('/checkout', function(req, res, next) {
+router.post('/checkout', isLoggedIn, function(req, res, next) {
   if (!req.session.cart) {
       return res.redirect('/cart');
   }
@@ -98,3 +98,12 @@ router.post('/checkout', function(req, res, next) {
 });
 
 module.exports = router;
+
+// Check if user logged in
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  req.session.oldUrl = req.url;
+  res.redirect('/user/login');
+}
