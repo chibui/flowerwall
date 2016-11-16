@@ -86,12 +86,12 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
       cart: cart,
       address: req.body.address,
       name: req.body.name,
-      paymentId: charge.id,
+      paymentId: charge.id
     });
     order.save(function(err, result) {
       // handle error
       req.flash('success', 'Deposit successful');
-      req.session.cart = null
+      req.session.cart = null;
       res.redirect('/');
     });
   });
