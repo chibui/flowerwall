@@ -19,7 +19,21 @@ module.exports = function Cart(oldCart) {
       this.totalQty++;
       // Add group total to cart total price
       this.totalPrice += storedItem.item.price;
-    }
+    };
+
+    // Remove item from cart
+    this.reduceByOne = function(id) {
+      this.items[id].qty--;
+      this.items[id].price -= this.items[id].item.price;
+      this.totalQty--;
+      this.totalPrice -= this.items[id].item.price;
+
+      // If quantity is <= 0 then delete item
+      if (this.items[id].qty <= 0) {
+        delete this.items[id];
+      }
+    };
+
     // Returns cart items as an array, stored as object above.
     this.generateArray = function () {
         var arr = [];

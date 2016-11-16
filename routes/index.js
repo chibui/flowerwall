@@ -37,6 +37,17 @@ router.get('/addToCart/:id', function(req, res, next) {
     });
 });
 
+// remove from cart routes
+
+router.get('/reduce/:id', function(req, res, next) {
+  var productId =req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+  cart.reduceByOne(productId);
+  req.session.cart = cart;
+  res.redirect('/cart');
+});
+
 // Cart routes
 router.get('/cart', function(req, res, next) {
   if (!req.session.cart) {
