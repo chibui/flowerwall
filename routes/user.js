@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var csrf = require('csurf');
 var passport = require('passport');
-
+var User = require('../models/user');
 var Order = require('../models/order');
 var Cart = require('../models/cart');
 
@@ -74,7 +74,6 @@ router.post('/login', passport.authenticate('local.login', {
       res.redirect('/user/profile');
   }
 });
-
 
 
 module.exports = router;

@@ -50,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   res.locals.login = req.isAuthenticated(); // pass authenticated object
   res.locals.session = req.session; // pass session object
+  res.locals.user = req.user || null; // pass user
   next();
 });
 
