@@ -21,7 +21,7 @@ module.exports = function Cart(oldCart) {
       this.totalPrice += storedItem.item.price;
     };
 
-    // Remove item from cart
+    // Remove one item from cart
     this.reduceByOne = function(id) {
       this.items[id].qty--;
       this.items[id].price -= this.items[id].item.price;
@@ -30,8 +30,20 @@ module.exports = function Cart(oldCart) {
 
       // If quantity is <= 0 then delete item
       if (this.items[id].qty <= 0) {
+        // this.totalQty -= this.items[id].qty;
+        // this.totalPrice -= this.items[id].price;
+        // removes all qty of this item when qty less than 0
         delete this.items[id];
       }
+    };
+
+    // Remove all qty of this item.
+    this.removeItem = function(id) {
+      // removes all qty of this item
+      this.totalQty -= this.items[id].qty;
+      // // removes prices of items
+      this.totalPrice -= this.items[id].price;
+      delete this.items[id];
     };
 
     // Returns cart items as an array, stored as object above.

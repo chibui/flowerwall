@@ -37,13 +37,23 @@ router.get('/addToCart/:id', function(req, res, next) {
     });
 });
 
-// remove from cart routes
-
+// reduce by 1 from cart routes
 router.get('/reduce/:id', function(req, res, next) {
-  var productId =req.params.id;
+  var productId = req.params.id;
+  //turnery for request cart if cart is a empty object
   var cart = new Cart(req.session.cart ? req.session.cart : {});
 
   cart.reduceByOne(productId);
+  req.session.cart = cart;
+  res.redirect('/cart');
+});
+
+// remove from cart routes
+router.get('/remove/:id', function(req, res, next) {
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+  cart.removeItem(productId);
   req.session.cart = cart;
   res.redirect('/cart');
 });
