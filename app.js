@@ -17,7 +17,7 @@ var MongoStore = require('connect-mongo')(session);
 
 var uristring =
    process.env.MONGOLAB_URI ||
-   process.env.MONGODB_URL ||
+   process.env.MONGODB_URI ||
    mongoose.connect('localhost:27017/shopping');
 
 require('./config/passport');
