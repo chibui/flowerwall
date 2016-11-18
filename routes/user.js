@@ -24,6 +24,22 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
   });
 });
 
+// Profile Routes
+router.get('/admin', isLoggedIn, function(req, res, next) {
+  Order.find(function(err, orders) {
+    if (err) {
+      return res.write('Error!');
+    }
+    var cart;
+    orders.forEach(function(order) {
+      cart = new Cart(order.cart);
+      order.items = cart.generateArray();
+    });
+    res.render('user/admin', { orders: orders});
+  });
+});
+
+
 // Logout Route
 router.get('/logout', isLoggedIn, function(req, res, next) {
   req.logout();
@@ -71,7 +87,11 @@ router.post('/login', passport.authenticate('local.login', {
     req.session.oldUrl = null;
     res.redirect(oldUrl);
   } else {
-      res.redirect('/user/profile');
+      if (req.user.admin) {
+        res.redirect('/user/admin');
+      } else {
+          res.redirect('/user/profile');
+      }
   }
 });
 
@@ -87,6 +107,13 @@ function isLoggedIn(req, res, next) {
 
 function notLoggedIn(req, res, next) {
   if (!req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+}
+
+function isAdmin(req, res, next) {
+  if (req.user.admin) {
     return next();
   }
   res.redirect('/');

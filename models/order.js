@@ -7,7 +7,9 @@ var schema = new Schema({
   address:    { type: String, required: true },
   name:       { type: String, required: true },
   paymentId:  { type: String, required: true },
-  date:       { type: Date, default: Date.now}
+  date:       { type: Date, default: Date.now},
+  confirm:    { type: Boolean},
+  completed:  { type: Boolean}
 });
 
 module.exports = mongoose.model('Order', schema);
