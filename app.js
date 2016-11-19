@@ -20,7 +20,7 @@ var MongoStore = require('connect-mongo')(session);
 //    process.env.MONGODB_URI ||
 //    mongoose.connect('localhost:27017/shopping');
 
-mongoose.connect('mongodb://heroku_4rkt6bh0:25q8f4ra85db2kvpdutsumve8f@ds057224.mlab.com:57224/heroku_4rkt6bh0')
+mongoose.connect(process.env.MONGODB_URI)
 
 require('./config/passport');
 
