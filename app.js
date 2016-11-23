@@ -15,12 +15,8 @@ var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
 
-// var uristring =
-//    process.env.MONGOLAB_URI ||
-//    process.env.MONGODB_URI ||
-//    mongoose.connect('localhost:27017/shopping');
-
-mongoose.connect(process.env.MONGODB_URI)
+// mongoose.connect(process.env.MONGODB_URI) || mongoose.connect(process.env.FLOWERWALL);
+mongoose.connect(process.env.FLOWERWALL);
 
 require('./config/passport');
 

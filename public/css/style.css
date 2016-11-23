@@ -9,3 +9,8 @@
 .thumbnail .description {
   color: grey;
 }
+
+.category-thumbnail img {
+  max-height: 100px;
+
+}

@@ -4,11 +4,11 @@
       <div id="success" class="alert alert-success" {{#if noMessage}}hidden{{/if}}>
         {{ successMsg }}
       </div>
-    {{/ if}}
+    {{/ if}}  
   </div>
 </div>
 
-{{# each category}}
+{{# each products}}
   <div class="row">
   {{# each this}}
     <div class="col-sm-4 col-md-4">
@@ -17,8 +17,9 @@
         <div class="caption clearfix">
           <h3>{{this.title}}</h3>
           <p class="description">{{this.description}}</p>
+          <div class="price pull-left">${{this.price}}</div>
 <!-- passing item id -->
-          <p><a href="/products/{{this._id}}" class="btn btn-default pull-right pull-down" role="button">More</a></p>
+          <p><a href="/addToCart/{{this._id}}" class="btn btn-default pull-right pull-down" role="button">Add</a></p>
         </div>
       </div>
     </div>

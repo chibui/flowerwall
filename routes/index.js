@@ -4,18 +4,36 @@ var router = express.Router();
 var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
+var Category = require('../models/category');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var successMsg = req.flash('success')[0];
-  Product.find(function(err,items) {
-      var productRows = [];
+  Category.find(function(err,items) {
+      var categoryRows = [];
       var rowSize = 3;
       for ( var i = 0; i < items.length; i += rowSize) {
-        productRows.push(items.slice(i, i + rowSize));
+        categoryRows.push(items.slice(i, i + rowSize));
       }  // Render shop index and flash message handling
-      res.render('shop/index', { title: 'Shop', products: productRows, successMsg: successMsg, noMessages: !successMsg});
+      res.render('shop/index', { title: 'Categories', category: categoryRows, successMsg: successMsg, noMessages: !successMsg});
   });
+});
+
+// GET products in category.
+
+router.get('/products/:id', function(req, res, next) {
+  var categoryId = req.params.id;
+  var successMsg = req.flash('success')[0];
+    Product.find( {category: categoryId} ,function(err, items) {
+      var productRows = [];
+      var rowSize = 3;
+      for (var i = 0; i < items.length; i += rowSize) {
+          productRows.push(items.slice(i, i + rowSize));
+        }
+      Category.findById(categoryId, function(err, category){
+        res.render('shop/products', {title: 'Shop', products: productRows, successMsg: successMsg, noMessages: !successMsg, category: category});
+      });
+    });
 });
 
 // add to cart route

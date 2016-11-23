@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+    {{# if successMsg }}
+      <div id="success" class="alert alert-success" {{#if noMessage}}hidden{{/if}}>
+        {{ successMsg }}
+      </div>
+    {{/ if}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="category-thumbnail img-responsive">
+      <img class="img-rounded img-responsive"src="{{ category.imagePath }}" alt="...">
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <h2>{{category.title}}</h2>
+    <h4>{{category.description}}</h4>
+  </div>
+</div>
+<br>
+{{# each products }}
+  <div class="list-group">
+    <div class="row">
+      {{# each this}}
+            <button type="button" class="list-group-item">
+              <div class="col-sm-4 col-md-4">
+                {{this.size}}
+              </div>
+              <div class="col-sm-4 col-md-4">
+                ${{this.price}}
+              </div>
+              <p><a href="/addToCart/{{this._id}}" class="btn btn-default pull-right pull-down" role="button">Add</a></p>
+            </button>
+      {{/each}}
+    </div>
+  </div>
+{{/each}}
