@@ -6,6 +6,8 @@ var Product = require('../models/product');
 var Order = require('../models/order');
 var Category = require('../models/category');
 
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var successMsg = req.flash('success')[0];
@@ -31,7 +33,7 @@ router.get('/products/:id', function(req, res, next) {
           productRows.push(items.slice(i, i + rowSize));
         }
       Category.findById(categoryId, function(err, category){
-        res.render('shop/products', {title: 'Shop', products: productRows, successMsg: successMsg, noMessages: !successMsg, category: category});
+        res.render('shop/products', {title: category.title, products: productRows, successMsg: successMsg, noMessages: !successMsg, category: category});
       });
     });
 });
@@ -41,14 +43,26 @@ router.get('/addToCart/:id', function(req, res, next) {
     var productId = req.params.id;
     // Create the cart , pass old cart if exists, else pass empty object
     var cart = new Cart(req.session.cart ? req.session.cart : {});
+    // var category = req.category;
+    // console.log(category);
 
-    // Use mongoose to find product
-    Product.findById(productId, function(err, product) {
+    // Category title not passing
+
+    // Category.findById(productId, function(err, category) {
+    //   console.log(category);
+    // });
+
+    // Use mongoose to find product and populate the category to get category title
+
+    Product.findById(productId)
+    .populate('category')
+    .exec(function(err, product) {
       if (err) {
         return res.redirect('/');
       }
       // pass the product and its product id to cart
-      cart.add(product, product.id);
+      console.log("category :", product.category)
+      cart.add(product, product.id, product.category);
       req.session.cart = cart; // save cart to session
       console.log(req.session.cart);
       res.redirect('/');

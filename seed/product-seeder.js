@@ -1,79 +1,81 @@
 var Product = require('../models/product');
 var mongoose = require('mongoose');
 
+// mongoose.connect(process.env.MONGODB_URI)
 mongoose.connect(process.env.FLOWERWALL)
+
 
 var products = [
   new Product({
     size: '2.4m x 2.4m',
     price: 450,
-    category: "583505284f158a27de44956c"
+    category: "58355a3475bf0d1b91f79f2d"
   }),
 
   new Product({
     size: '2.2m x 2.5m',
     price: 460,
-    category: "583505284f158a27de44956d"
+    category: "58355a3475bf0d1b91f79f2e"
   }),
 
   new Product({
     size: '2.4m x 2.4m',
     price: 470,
-    category: "583505284f158a27de44956e"
+    category: "58355a3475bf0d1b91f79f2f"
   }),
 
   new Product({
-    size: '2m x 2m',
+    size: '2.0m x 2.0m',
     price: 450,
-    category: "583505284f158a27de44956f"
+    category: "58355a3475bf0d1b91f79f30"
   }),
 
   new Product({
     size: '2.1m x 1.9m',
     price: 420,
-    category: "583505284f158a27de449570"
+    category: "58355a3475bf0d1b91f79f31"
   }),
 
   new Product({
     size: '2.4m x 2.4m',
     price: 470,
-    category: "583505284f158a27de449571"
+    category: "58355a3475bf0d1b91f79f32"
   }),
 
   new Product({
     size: '2.4m x 2.4m',
     price: 500,
-    category: "583505284f158a27de449572"
+    category: "58355a3475bf0d1b91f79f33"
   }),
 
   new Product({
     size: '2.4m x 2.4m',
     price: 400,
-    category: "583505284f158a27de449573"
+    category: "58355a3475bf0d1b91f79f34"
   }),
 
   new Product({
     size: '2.4m x 2.4m',
     price: 500,
-    category: "583505284f158a27de449574"
+    category: "58355a3475bf0d1b91f79f35"
   }),
 
   new Product({
     size: '2.1m x 1.9m',
     price: 450,
-    category: "583505284f158a27de449575"
+    category: "58355a3475bf0d1b91f79f36"
   }),
 
   new Product({
     size: '2.4m x 2.4m',
     price: 470,
-    category: "583505284f158a27de449576"
+    category: "58355a3475bf0d1b91f79f37"
   }),
 
   new Product({
     size: '2.2m x 2.4m',
     price: 460,
-    category: "583505284f158a27de449577"
+    category: "58355a3475bf0d1b91f79f38"
   })
 ];
 

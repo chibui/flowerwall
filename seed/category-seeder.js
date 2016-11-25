@@ -1,7 +1,9 @@
 var Category = require('../models/category');
 var mongoose = require('mongoose');
 
+// mongoose.connect(process.env.MONGODB_URI)
 mongoose.connect(process.env.FLOWERWALL)
+
 
 var categories = [
   new Category({

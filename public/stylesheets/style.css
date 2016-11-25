@@ -9,3 +9,20 @@
 .thumbnail .description {
   color: grey;
 }
+
+nav.navbar {
+  padding-top: 5px;
+  margin-bottom: -10%;
+  background-color: transparent;
+}
+
+.fa {
+  color: #C5B5A1;
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+  /*font-weight: bold;*/
+}
