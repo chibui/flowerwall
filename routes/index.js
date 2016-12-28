@@ -43,25 +43,15 @@ router.get('/addToCart/:id', function(req, res, next) {
     var productId = req.params.id;
     // Create the cart , pass old cart if exists, else pass empty object
     var cart = new Cart(req.session.cart ? req.session.cart : {});
-    // var category = req.category;
-    // console.log(category);
 
-    // Category title not passing
-
-    // Category.findById(productId, function(err, category) {
-    //   console.log(category);
-    // });
-
-    // Use mongoose to find product and populate the category to get category title
 
     Product.findById(productId)
-    .populate('category')
+    .populate('category') // Find the category object from the object id using populate
     .exec(function(err, product) {
       if (err) {
         return res.redirect('/');
       }
-      // pass the product and its product id to cart
-      console.log("category :", product.category)
+      // pass the product and its product id to cart and also the whole of category for the title.
       cart.add(product, product.id, product.category);
       req.session.cart = cart; // save cart to session
       console.log(req.session.cart);

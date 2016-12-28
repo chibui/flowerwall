@@ -18,13 +18,12 @@ var schema = new Schema({
   venueEmail:   { type: String},
   venueAddress: { type: String, required: true },
   eventType:    { type: Array}, //must create a separate model
-  stair:        { type: Boolean, default: false },
-  lift:         { type: Boolean, default: false },
+  stair:        { type: Boolean },
+  lift:         { type: Boolean },
   message:      { type: String},
   balance:      { type: Number},
   balancePaid:  { type: Boolean, default: false},
   completed:    { type: Boolean, default: false}
-
 
 });
 
