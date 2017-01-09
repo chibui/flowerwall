@@ -16,7 +16,7 @@ var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
 
 mongoose.connect(process.env.MONGODB_URI);
-// mongoose.connect(process.env.FLOWERWALL);
+
 
 require('./config/passport');
 

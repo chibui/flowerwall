@@ -13,7 +13,6 @@ body {
   margin-top: -10px ;
 }
 
-/*linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),*/
 .cover {
  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(http://www.theflowerwall.com.au/wp-content/uploads/2016/09/ivoryflowerwall-1350x900.jpg) no-repeat center center fixed;
  -webkit-background-size: cover;
@@ -22,22 +21,34 @@ body {
  background-size: cover;
  position:relative;
  height: 50%;
-
+ padding-top: 10%;
+ padding-bottom: 10%;
+ color: #fff;
+ font-family: Josefin Slab, serif;
 }
 
-.cover h1 {
-  padding-top: 20%;
-  padding-bottom: 10%;
-  font-family: 'Parisienne', cursive;
+
+.hero-text {
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Pacifico', cursive;
   font-size: 60px;
-  color: #fff;
   /*text-shadow: 2px 2px #a5a4a0;*/
 }
+
 </style>
 
 <div class= "container-fluid cover">
-<h1 class="text-center">Sydney's Premium flower walls</h1>
+  <div class="row">
+    <p class="text-center">WELCOME TO</p>
+  </div>
+  <div class="row">
+    <h1 class="hero-text text-center">The Flower Wall</h1>
+  </div>
+  <div class="">
+    <h4 class="text-center"><i>Sydney's Premier Hand Crafted Flower Walls</i></h4>
+  </div>
 </div>
+
 
 {{# each category}}
   <div class="row">

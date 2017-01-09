@@ -13,12 +13,10 @@
 nav.navbar {
   padding-top: 5px;
   margin-bottom: -10%;
-  background-color: rgba(0, 0, 0, 0.5);
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+
 }
 
-nav {
-  background-color: rgba(0, 0, 0, 0.5);
-}
 .fa {
   color: #C5B5A1;
   font-size: 20px;
