@@ -20,40 +20,24 @@
   </div>
 </div>
 
-<!-- {{> client-list }} -->
+{{> client-list}}
 
 <div class="container-fluid">
-  <div class="section-header">
-    <h1 class="text-center">OUR CLIENTS</h1>
-    {{# each client}}
-      <div class="row">
-        {{# each this}}
-          <div class="col-sm-12 col-md-2">
-            <div class="Aligner">
-              <img class="Aligner-item img-responsive" src="{{ this.logo }}" alt="{{ this.name }}">
-            </div>
+  {{# each category}}
+    <div class="row">
+      {{# each this}}
+      <div class="col-sm-4 col-md-4">
+        <div class="thumbnail">
+          <img src="{{ this.imagePath }}" alt="...">
+          <div class="caption clearfix">
+            <h3>{{this.title}}</h3>
+            <p class="description">{{this.description}}</p>
+  <!-- passing item id -->
+            <p><a href="/products/{{this._id}}" class="btn btn-default pull-right pull-down" role="button">More</a></p>
           </div>
-        {{/each}}
-      </div>
-    {{/each}}
-  </div>
-</div>
-
-
-{{# each category}}
-  <div class="row">
-    {{# each this}}
-    <div class="col-sm-4 col-md-4">
-      <div class="thumbnail">
-        <img src="{{ this.imagePath }}" alt="...">
-        <div class="caption clearfix">
-          <h3>{{this.title}}</h3>
-          <p class="description">{{this.description}}</p>
-<!-- passing item id -->
-          <p><a href="/products/{{this._id}}" class="btn btn-default pull-right pull-down" role="button">More</a></p>
         </div>
       </div>
-    </div>
-    {{/each}}
-  </div><!-- row -->
-{{/each}}
+      {{/each}}
+    </div><!-- row -->
+  {{/each}}
+</div>

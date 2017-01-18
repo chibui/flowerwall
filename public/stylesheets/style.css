@@ -2,11 +2,9 @@
 .thumbnail {
   min-height: 430px;
 }
-
 .thumbnail img {
   max-height: 200px;
 }
-
 .thumbnail .description {
   color: grey;
 }
@@ -16,9 +14,7 @@
   font-family: 'Raleway', sans-serif;
   letter-spacing: 2px;
   padding-top: 5em;
-
 }
-
 
 /*Verticle Alignment*/
 .Aligner {
@@ -26,9 +22,6 @@
   align-items: center;
   justify-content: center;
   min-height: 24em;
-}
-.Aligner-item {
-  /*max-width: 50%*/
 }
 
 /*Navbar */

@@ -6,11 +6,13 @@ var Product = require('../models/product');
 var Order = require('../models/order');
 var Category = require('../models/category');
 var Client = require('../models/client');
+var findClients = require('../config/client');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var successMsg = req.flash('success')[0];
+  var categoryRows = [];
 
   Category.find(function(err,items) {
     var categoryRows = [];
@@ -18,17 +20,20 @@ router.get('/', function(req, res, next) {
     for ( var i = 0; i < items.length; i += rowSize) {
       categoryRows.push(items.slice(i, i + rowSize));
     }  // Render shop index and flash message handling
-    return items = {category: categoryRows, successMsg: successMsg, noMessages: !successMsg};
+
+    res.render('shop/index', { title: 'The Flowerwall', category: categoryRows, successMsg: successMsg, noMessages: !successMsg});
   });
 
-  Client.find(function(err,clients) {
-    var clientRows = [];
-    var rowSize = 6;
-    for ( var i = 0; i < clients.length; i += rowSize) {
-      clientRows.push(clients.slice(i, i + rowSize));
-    }
-    res.render('shop/index', { title: 'The Flowerwall', client: clientRows, category: this.categoryRows, uccessMsg: successMsg, noMessages: !successMsg});
-  })
+
+// figure out how to do async in get
+  // Client.find(function(err,clients) {
+  //   var clientRows = [];
+  //   var rowSize = 6;
+  //   for ( var i = 0; i < clients.length; i += rowSize) {
+  //     clientRows.push(clients.slice(i, i + rowSize));
+  //   }
+  //   res.render('shop/index', { title: 'The Flowerwall', client: clientRows, category: this.categoryRows, uccessMsg: successMsg, noMessages: !successMsg});
+  // })
 });
 
 // GET products in category.
