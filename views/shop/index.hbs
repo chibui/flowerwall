@@ -23,18 +23,19 @@
 {{> client-list}}
 
 <div class="container-fluid">
+  <div class="section-header">
+    <div class="header-padding-bottom">
+      <h1 class="text-center">OUR COLLECTION</h1>
+    </div>
+  </div>
   {{# each category}}
     <div class="row">
       {{# each this}}
       <div class="col-sm-4 col-md-4">
-        <div class="thumbnail">
-          <img src="{{ this.imagePath }}" alt="...">
-          <div class="caption clearfix">
-            <h3>{{this.title}}</h3>
-            <p class="description">{{this.description}}</p>
-  <!-- passing item id -->
-            <p><a href="/products/{{this._id}}" class="btn btn-default pull-right pull-down" role="button">More</a></p>
-          </div>
+        <div class="gallery">
+          <a href="/products/{{this._id}}" role="button">
+            <img class="img-responsive"src="{{ this.imagePath }}" alt="...">
+          </a>
         </div>
       </div>
       {{/each}}

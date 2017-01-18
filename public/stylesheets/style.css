@@ -8,6 +8,24 @@
 .thumbnail .description {
   color: grey;
 }
+/*Gallery*/
+
+.gallery {
+  position: relative;
+  padding-bottom: 66%;
+  overflow: hidden;
+  width: 100%;
+}
+.gallery img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 388px;
+
+}
 
 /*Section Header*/
 .section-header {
@@ -16,12 +34,16 @@
   padding-top: 5em;
 }
 
+.header-padding-bottom {
+  padding-bottom: 6vh;
+}
+
 /*Verticle Alignment*/
 .Aligner {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 24em;
+  min-height: 15em;
 }
 
 /*Navbar */
