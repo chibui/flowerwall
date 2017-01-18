@@ -11,11 +11,16 @@
   color: grey;
 }
 
-/*Client list*/
-.clients-list {
-  padding-top: 10%;
+/*Section Header*/
+.section-header {
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 2px;
+  padding-top: 5em;
+
 }
 
+
+/*Verticle Alignment*/
 .Aligner {
   display: flex;
   align-items: center;
@@ -31,7 +36,6 @@ nav.navbar {
   padding-top: 5px;
   margin-bottom: -10%;
   /*background-color: rgba(0, 0, 0, 0.5);*/
-
 }
 
 .fa {

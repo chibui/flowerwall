@@ -22,19 +22,21 @@
 
 <!-- {{> client-list }} -->
 
-<div class="container">
-  <h1 class="text-center">OUR CLIENTS</h1>
-  {{# each client}}
-    <div class="row">
-      {{# each this}}
-        <div class="col-sm-12 col-md-2">
-          <div class="Aligner">
-            <img class="Aligner-item img-responsive" src="{{ this.logo }}" alt="{{ this.name }}">
+<div class="container-fluid">
+  <div class="section-header">
+    <h1 class="text-center">OUR CLIENTS</h1>
+    {{# each client}}
+      <div class="row">
+        {{# each this}}
+          <div class="col-sm-12 col-md-2">
+            <div class="Aligner">
+              <img class="Aligner-item img-responsive" src="{{ this.logo }}" alt="{{ this.name }}">
+            </div>
           </div>
-        </div>
-      {{/each}}
-    </div>
-  {{/each}}
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
 </div>
 
 

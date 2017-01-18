@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     for ( var i = 0; i < items.length; i += rowSize) {
       categoryRows.push(items.slice(i, i + rowSize));
     }  // Render shop index and flash message handling
-    return {category: categoryRows, successMsg: successMsg, noMessages: !successMsg};
+    return items = {category: categoryRows, successMsg: successMsg, noMessages: !successMsg};
   });
 
   Client.find(function(err,clients) {

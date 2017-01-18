@@ -11,28 +11,16 @@ var clients = [
     logo: '../images/verawang.png'
   }),
   new Client({
-    name: 'Seven',
-    logo: '../images/7.png'
-  }),
-  new Client({
-    name: 'Beauty Base',
-    logo: '../images/beautybase.png'
+    name: 'Mecca',
+    logo: '../images/mecca.png'
   }),
   new Client({
     name: 'Getty Images',
     logo: '../images/gettyimages.svg'
   }),
   new Client({
-    name: 'Lifestyle Suite',
-    logo: '../images/lifestylesuite.png'
-  }),
-  new Client({
-    name: 'Mecca',
-    logo: '../images/Mecca.png'
-  }),
-  new Client({
     name: 'Nova',
-    logo: '../images/Nova.png'
+    logo: '../images/nova.png'
   }),
   new Client({
     name: 'Novotel',
@@ -45,6 +33,18 @@ var clients = [
   new Client({
     name: 'Sportscraft',
     logo: '../images/sportscraft.png'
+  }),
+  new Client({
+    name: 'Lifestyle Suite',
+    logo: '../images/lifestylesuite.png'
+  }),
+  new Client({
+    name: 'Beauty Base',
+    logo: '../images/beautybase.png'
+  }),
+  new Client({
+    name: 'Seven',
+    logo: '../images/7.png'
   })
 ];
 
