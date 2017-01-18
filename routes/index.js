@@ -5,20 +5,30 @@ var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
 var Category = require('../models/category');
-
+var Client = require('../models/client');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var successMsg = req.flash('success')[0];
+
   Category.find(function(err,items) {
-      var categoryRows = [];
-      var rowSize = 3;
-      for ( var i = 0; i < items.length; i += rowSize) {
-        categoryRows.push(items.slice(i, i + rowSize));
-      }  // Render shop index and flash message handling
-      res.render('shop/index', { title: 'Categories', category: categoryRows, successMsg: successMsg, noMessages: !successMsg});
+    var categoryRows = [];
+    var rowSize = 3;
+    for ( var i = 0; i < items.length; i += rowSize) {
+      categoryRows.push(items.slice(i, i + rowSize));
+    }  // Render shop index and flash message handling
+    return {category: categoryRows, successMsg: successMsg, noMessages: !successMsg};
   });
+
+  Client.find(function(err,clients) {
+    var clientRows = [];
+    var rowSize = 6;
+    for ( var i = 0; i < clients.length; i += rowSize) {
+      clientRows.push(clients.slice(i, i + rowSize));
+    }
+    res.render('shop/index', { title: 'The Flowerwall', client: clientRows, category: this.categoryRows, uccessMsg: successMsg, noMessages: !successMsg});
+  })
 });
 
 // GET products in category.

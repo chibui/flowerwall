@@ -8,51 +8,39 @@
   </div>
 </div>
 
-<style>
-body {
-  margin-top: -10px ;
-}
-
-.cover {
- background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(http://www.theflowerwall.com.au/wp-content/uploads/2016/09/ivoryflowerwall-1350x900.jpg) no-repeat center center fixed;
- -webkit-background-size: cover;
- -moz-background-size: cover;
- -o-background-size: cover;
- background-size: cover;
- position:relative;
- height: 50%;
- padding-top: 10%;
- padding-bottom: 10%;
- color: #fff;
- font-family: Josefin Slab, serif;
-}
-
-
-.hero-text {
-  font-family: 'Raleway', sans-serif;
-  font-family: 'Pacifico', cursive;
-  font-size: 60px;
-  /*text-shadow: 2px 2px #a5a4a0;*/
-}
-
-</style>
-
-<div class= "container-fluid cover">
+<div class= "container-fluid landing-cover">
   <div class="row">
-    <p class="text-center">WELCOME TO</p>
+    <p class="text-center hero-title"><strong>WELCOME TO</strong></p>
   </div>
   <div class="row">
     <h1 class="hero-text text-center">The Flower Wall</h1>
   </div>
   <div class="">
-    <h4 class="text-center"><i>Sydney's Premier Hand Crafted Flower Walls</i></h4>
+    <h4 class="text-center hero-subtitle"><i>Sydney's Premier Hand Crafted Flower Walls</i></h4>
   </div>
+</div>
+
+<!-- {{> client-list }} -->
+
+<div class="container">
+  <h1 class="text-center">OUR CLIENTS</h1>
+  {{# each client}}
+    <div class="row">
+      {{# each this}}
+        <div class="col-sm-12 col-md-2">
+          <div class="Aligner">
+            <img class="Aligner-item img-responsive" src="{{ this.logo }}" alt="{{ this.name }}">
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
 </div>
 
 
 {{# each category}}
   <div class="row">
-  {{# each this}}
+    {{# each this}}
     <div class="col-sm-4 col-md-4">
       <div class="thumbnail">
         <img src="{{ this.imagePath }}" alt="...">
@@ -64,6 +52,6 @@ body {
         </div>
       </div>
     </div>
-  {{/each}}
-  </div>
+    {{/each}}
+  </div><!-- row -->
 {{/each}}

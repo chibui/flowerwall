@@ -1,0 +1,15 @@
+<div class="clients-list">
+  <h1 class="text-center">OUR CLIENTS</h1>
+  {{# each client }}
+    <div class="row">
+      {{# each this}}
+        <div class="col-sm-4 col-md-4">
+          <div class="thumbnail">
+            <p>test</p>
+            <img src="{{ this.logo }}" alt="{{ test }}">
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+</div>
