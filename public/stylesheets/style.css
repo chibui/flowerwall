@@ -1,4 +1,5 @@
 @import "gallery.css";
+@import "nav.css";
 
 /* thumbnail styling */
 .thumbnail {
@@ -21,8 +22,14 @@
 /*Section Header*/
 .section-header {
   font-family: 'Raleway', sans-serif;
+  /*font-family: 'EB Garamond';*/
   letter-spacing: 2px;
   padding-top: 5em;
+  color: #E5CAB1
+}
+
+.footer {
+  color: #D4C6AC;
 }
 
 .header-padding-bottom {
@@ -36,25 +43,6 @@
   justify-content: center;
   min-height: 15em;
 }
-
-/*Navbar */
-nav.navbar {
-  padding-top: 5px;
-  margin-bottom: -10%;
-  /*background-color: rgba(0, 0, 0, 0.5);*/
-}
-
-.fa {
-  color: #C5B5A1;
-  font-size: 20px;
-}
-
-.navbar-brand {
-  font-family: 'Raleway', sans-serif;
-  font-size: 25px;
-  /*font-weight: bold;*/
-}
-
 
 /*Index*/
 body {
@@ -80,6 +68,7 @@ body {
   /*font-family: 'Raleway', sans-serif;*/
   font-family: 'Pacifico', cursive;
   font-size: 60px;
+  color: floralwhite;
 
   /*text-shadow: 2px 2px #a5a4a0;*/
 }

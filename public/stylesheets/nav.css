@@ -1,0 +1,28 @@
+/*Navbar */
+nav.navbar {
+  padding-top: 5px;
+  margin-bottom: -10%;
+  background: transparent;
+}
+.fa {
+  color: #C5B5A1;
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+  /*font-weight: bold;*/
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  background-color: #EDE9E0;
+  color: #D4C6AC;
+}
+
+.navbar-default .navbar-brand {
+    color: #D4C6AC;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #D4C6AC;
+}
