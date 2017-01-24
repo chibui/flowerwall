@@ -29,13 +29,19 @@
     </div>
   </div>
   {{# each category}}
-    <div class="row">
+    <div class="row no-gutter">
       {{# each this}}
       <div class="col-sm-4 col-md-4">
-        <div class="gallery">
-          <a href="/products/{{this._id}}" role="button">
-            <img class="img-responsive"src="{{ this.imagePath }}" alt="...">
-          </a>
+        <div class="hovereffect">
+          <div class="gallery">
+            <!-- <a href="/products/{{this._id}}" role="button"> -->
+              <img class="img-responsive" src="{{ this.imagePath }}" alt="{{ this.title }}">
+              <div class="overlay">
+                <h2>{{this.title}}</h2>
+                <a class="info" href="/products/{{this._id}}">View</a>
+              </div>
+            <!-- </a> -->
+          </div>
         </div>
       </div>
       {{/each}}
