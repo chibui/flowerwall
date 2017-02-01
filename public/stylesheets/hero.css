@@ -1,0 +1,16 @@
+.hero-text {
+  /*font-family: 'Raleway', sans-serif;*/
+  font-family: 'Pacifico', cursive;
+  font-size: 60px;
+  color: floralwhite;
+  /*text-shadow: 2px 2px #a5a4a0;*/
+}
+
+.hero-title {
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+.hero-subtitle {
+  letter-spacing: 2px;
+  font-weight: 800;
+}

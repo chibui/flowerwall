@@ -1,0 +1,13 @@
+.footer {
+  color: #D4C6AC;
+  padding: 0,20px,0,20px;
+  background-color: #fff;
+}
+
+.footer .text-left {
+  padding-left: 3%;
+}
+
+.footer .text-right {
+  padding-right: 2%;
+}
