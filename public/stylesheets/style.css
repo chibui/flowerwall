@@ -28,8 +28,25 @@
   color: #E5CAB1
 }
 
+.section-text {
+  color: #7A7D7C;
+}
+
 .footer {
   color: #D4C6AC;
+  padding: 0,20px,0,20px;
+  background-color: #fff;
+}
+
+.footer .text-left {
+  padding-left: 3%;
+}
+
+.footer .text-right {
+  padding-right: 2%;
+}
+#contactMessage {
+  min-width: 100%;
 }
 
 .header-padding-bottom {

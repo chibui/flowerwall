@@ -155,6 +155,20 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
   });
 });
 
+// contact form routes
+router.get('/contact', function(req, res, next) {
+  var successMsg = req.flash('success')[0];
+  res.render('shop/contact', { title: 'Contact Us', successMsg: successMsg, noMessages: !successMsg });
+});
+
+// FAQ routes
+router.get('/faq', function(req, res, next) {
+  var successMsg = req.flash('sucess')[0];
+  res.render('shop/faq', { title: 'Frequently Asked Questions', successMsg: successMsg, noMessages: !successMsg });
+});
+
+
+
 module.exports = router;
 
 // Check if user logged in
