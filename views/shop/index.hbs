@@ -22,29 +22,43 @@
 
 {{> client-list}}
 
-<div class="container">
-  <div class="header-padding-bottom">
-    <div class="section-header">
-      <h1 id="Products"class="text-center">OUR COLLECTION</h1>
-    </div>
+<div class= "container-fluid second-cover">
+  <!-- <div class="row">
+    <p class="text-center hero-title"><strong>WELCOME TO</strong></p>
+  </div> -->
+  <div class="row">
+    <h1 class="hero-text text-center">Weddings, events and props</h1>
   </div>
-  {{# each category}}
-    <div class="row no-gutter">
-      {{# each this}}
-      <div class="col-sm-4 col-md-4">
-        <div class="hovereffect">
-          <div class="gallery">
-            <!-- <a href="/products/{{this._id}}" role="button"> -->
-              <img class="img-responsive" src="{{ this.imagePath }}" alt="{{ this.title }}">
-              <div class="overlay">
-                <h2>{{this.title}}</h2>
-                <a class="info" href="/products/{{this._id}}">View</a>
-              </div>
-            <!-- </a> -->
+  <!-- <div class="">
+    <h4 class="text-center hero-subtitle"><i>Sydney's Premier Hand Crafted Flower Walls</i></h4>
+  </div> -->
+</div>
+
+<div class="container">
+  <div class="section-padding">
+    <div class="header-padding-bottom">
+      <div class="section-header">
+        <h1 id="Products"class="text-center">OUR COLLECTION</h1>
+      </div>
+    </div>
+    {{# each category}}
+      <div class="row no-gutter">
+        {{# each this}}
+        <div class="col-sm-4 col-md-4">
+          <div class="hovereffect">
+            <div class="gallery">
+              <!-- <a href="/products/{{this._id}}" role="button"> -->
+                <img class="img-responsive" src="{{ this.imagePath }}" alt="{{ this.title }}">
+                <div class="overlay">
+                  <h2>{{this.title}}</h2>
+                  <a class="info" href="/products/{{this._id}}">View</a>
+                </div>
+              <!-- </a> -->
+            </div>
           </div>
         </div>
-      </div>
-      {{/each}}
-    </div><!-- row -->
-  {{/each}}
+        {{/each}}
+      </div><!-- row -->
+    {{/each}}
+  </div>
 </div>
