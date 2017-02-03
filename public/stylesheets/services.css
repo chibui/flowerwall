@@ -1,16 +1,16 @@
-/*Gallery*/
-.gallery {
+/*services*/
+.services {
   position: relative;
   /*padding-bottom: 66%;*/
   overflow: hidden;
   width: 100%;
 }
-.gallery img {
+.services img {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  max-height: 266px;
+  max-height: 370px;
 }
