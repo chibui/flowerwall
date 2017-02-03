@@ -19,3 +19,8 @@
 #contactMessage {
   min-width: 100%;
 }
+
+.gform iframe {
+  width: 100%;
+  height: 1000px;
+}
