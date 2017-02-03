@@ -28,12 +28,25 @@
 }
 
 /*Section Header*/
-.section-header {
-  font-family: 'Raleway', sans-serif;
+/*.section-header {
+  font-family: 'Raleway', sans-serif;*/
   /*font-family: 'EB Garamond';*/
-  letter-spacing: 2px;
+  /*letter-spacing: 2px;
+  color: #E5CAB1;
+}*/
 
-  color: #E5CAB1
+.section-header h1 {
+  font-size: 80px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #E5CAB1;
+
+}
+.section-sub-heading {
+  font-family: 'Old Standard TT', serif;
+  color: #575758;
+
 }
 
 /*Section text*/

@@ -1,11 +1,12 @@
 /*services*/
-.services {
+/*keep for images*/
+/*.services {
   position: relative;
-  /*padding-bottom: 66%;*/
   overflow: hidden;
   width: 100%;
-}
-.services img {
+}*/
+/*keep for images*/
+/*.services img {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -13,4 +14,36 @@
   right: 0;
   width: 100%;
   max-height: 360px;
+}*/
+
+.services {
+  background-color: #FCFBFA;
+  padding-bottom: 5%;
+  border-bottom: 1px solid #f9f2ec;
+}
+
+
+.qwerty {
+  font-family: 'Pacifico', cursive;
+  color: #7A7D7C;
+  position: relative;
+  height: 35rem;
+  border: 1px solid #f9f2ec;
+  background-color: #fff;
+}
+
+.v-align {
+  position: relative;;
+  top: 40%;
+  transform: translateY(-40%);
+}
+
+.to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  color: #E5CAB1;
+}
+.to-top a {
+  color: #E5CAB1;
 }
